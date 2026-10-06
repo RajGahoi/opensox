@@ -1,5 +1,8 @@
 import { loadAllPrograms, getAllTags } from "@/data/oss-programs";
 import ProgramsList from "./ProgramsList";
+import { canonicalMetadata } from "@/lib/seo";
+
+export const metadata = canonicalMetadata("/dashboard/oss-programs");
 
 export const revalidate = 3600;
 

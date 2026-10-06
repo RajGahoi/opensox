@@ -59,7 +59,7 @@ so that is the first and the one of the most complex problem when we contribute 
 
 so but to be honest initially it doesn't matter much like you can contribute to any OPEN SOURCE project depending on your tech stack or on your preferences but again it's still a hustle kind of thing because we are not able to land on a good project.
 
-so that is why i had created [opensox.ai](https://www.opensox.ai/) and i'm still working on that. but that was the first problem and there was a second problem as well.
+so that is why i had created [opensox.ai](https://opensox.ai/) and i'm still working on that. but that was the first problem and there was a second problem as well.
 
 when we are very new and when we contribute to repositories that are pretty famous and very complex code bases then we face a lot of competition or a lot of saturation because there are a lot of people who are making contributions parallelly and there we have to make contributions as a beginner.
 

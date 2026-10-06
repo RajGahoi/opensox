@@ -3,9 +3,17 @@ import { getSheetModules } from "@/data/sheet";
 import { SheetModuleHeader } from "@/components/sheet/SheetModuleHeader";
 import { SheetContentRenderer } from "@/components/sheet/SheetContentRenderer";
 import styles from "./sheet-content.module.css";
+import { canonicalMetadata } from "@/lib/seo";
 
 interface PageProps {
   params: Promise<{ moduleId: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps) {
+  const { moduleId } = await params;
+  const sheetModule = getSheetModules().find((module) => module.id === moduleId);
+  if (!sheetModule || sheetModule.comingSoon) notFound();
+  return canonicalMetadata(`/sheet/${sheetModule.id}`);
 }
 
 export default async function SheetModulePage({ params }: PageProps) {
@@ -13,7 +21,7 @@ export default async function SheetModulePage({ params }: PageProps) {
   const sheetModules = getSheetModules();
   const sheetModule = sheetModules.find((m) => m.id === moduleId);
 
-  if (!sheetModule) {
+  if (!sheetModule || sheetModule.comingSoon) {
     notFound();
   }
 

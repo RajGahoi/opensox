@@ -15,7 +15,7 @@ so let's get into it — i'll show you 10+ ways to discover awesome open source 
 
 this one's built exactly for this purpose.
 
-head over to [opensox.ai](https://www.opensox.ai/), click get started → find projects, choose your tech stack — say typescript — then adjust filters like popularity or competition level. hit search, and boom — you'll get a curated list of projects you can explore.
+head over to [opensox.ai](https://opensox.ai/), click get started → find projects, choose your tech stack — say typescript — then adjust filters like popularity or competition level. hit search, and boom — you'll get a curated list of projects you can explore.
 
 ignore random personal projects and focus on official or company-backed ones. opensox gives you a good mix, but it's still improving, so you might see a few irrelevant ones here and there.
 

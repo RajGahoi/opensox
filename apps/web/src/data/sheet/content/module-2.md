@@ -146,7 +146,7 @@ you don't need to be an expert — just enough to make sense of what's happening
 
 right now, there's no perfect tool to find open source projects by niche.
 
-but i'm building [opensox.ai](https://www.opensox.ai/), which will let you filter projects by category — ai, infra, frontend, backend, etc. can't wait to ship that one.
+but i'm building [opensox.ai](https://opensox.ai/), which will let you filter projects by category — ai, infra, frontend, backend, etc. can't wait to ship that one.
 
 ### extra skills that help
 

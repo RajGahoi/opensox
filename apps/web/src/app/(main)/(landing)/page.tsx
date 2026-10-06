@@ -9,6 +9,9 @@ import Testimonials from '@/components/landing-sections/testimonials'
 import Video from '@/components/landing-sections/video'
 import React from 'react'
 import { FaqSection } from '@/components/faq/FaqSection'
+import { canonicalMetadata } from '@/lib/seo'
+
+export const metadata = canonicalMetadata('/')
 
 
 const Landing = () => {

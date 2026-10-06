@@ -2,7 +2,7 @@ import { getAllPosts } from "@/lib/blog";
 import type { Metadata } from "next";
 import BlogList from "./blog-list";
 
-const SITE_URL = "https://opensox.ai";
+import { SITE_URL } from "@/lib/seo";
 const BLOG_OG_IMAGE = {
   url: "/images/open-source-blogs.png",
   width: 1200,
