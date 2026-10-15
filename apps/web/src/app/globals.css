@@ -131,7 +131,7 @@ html {
   @apply my-8;
 }
 .prose-blog img {
-  @apply rounded-lg my-6 max-w-full;
+  @apply rounded-lg my-6 max-w-full h-auto;
 }
 
 /* Blog theme overrides */

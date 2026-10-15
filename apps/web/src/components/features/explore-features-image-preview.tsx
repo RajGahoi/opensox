@@ -1,12 +1,12 @@
 "use client";
 
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import type { HeroIcon } from "./explore-features-data";
 
 type FeatureImagePreviewProps = {
-  imageSrc: string;
+  imageSrc: StaticImageData | string;
   featureTitle: string;
   FeatureIcon: HeroIcon;
   className?: string;

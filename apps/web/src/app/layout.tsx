@@ -5,8 +5,6 @@ import { ThemeProvider } from "./theme-provider";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { PostHogProvider, PostHogAuthTracker } from "./providers";
-import { getServerSession } from "next-auth/next";
-import { authConfig } from "@/lib/auth/config";
 import { SessionWrapper } from "./SessionWrapper";
 import { TRPCProvider } from "@/providers/trpc-provider";
 import { GeistSans } from "geist/font/sans";
@@ -111,13 +109,13 @@ const websiteJsonLd = {
   description: SEO_DESCRIPTION,
 };
 
-export default async function RootLayout({
+// reading the session here would make every page, including public ones,
+// render per request; the session is loaded in the browser instead
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await getServerSession(authConfig);
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -134,7 +132,7 @@ export default async function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <SessionWrapper session={session}>
+            <SessionWrapper>
               <PostHogAuthTracker />
               <TRPCProvider>{children}</TRPCProvider>
             </SessionWrapper>

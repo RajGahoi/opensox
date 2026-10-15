@@ -11,15 +11,8 @@ import Features from "@/components/features/features";
 import dynamic from "next/dynamic";
 import { trpc } from "@/lib/trpc";
 import { formatApproxPlanPrice } from "@/lib/format-plan-price";
-
-const Footer = dynamic(
-  () =>
-    import("@/components/landing-sections/footer").then((mod) => mod.default),
-  {
-    ssr: false,
-    loading: () => null,
-  },
-);
+import Footer from "@/components/landing-sections/footer";
+import jackedajPortrait from "../../../../../public/assets/jackedaj.jpg";
 
 // lazy load PaymentFlow - it's inside pricing card but can wait
 const PaymentFlow = dynamic(
@@ -258,7 +251,7 @@ const Pricing = () => {
             >
               <div className="relative aspect-square w-full max-w-sm overflow-hidden rounded-3xl border border-border">
                 <Image
-                  src="/assets/jackedaj.jpg"
+                  src={jackedajPortrait}
                   alt="jackedAJ"
                   fill
                   priority

@@ -2,6 +2,9 @@
 import { Sparkles, Upload, Zap } from "lucide-react";
 import Features from "../ui/features";
 import Header from "../ui/header";
+import filterImage from "../../../public/assets/filter.webp";
+import searchImage from "../../../public/assets/search.webp";
+import contributeImage from "../../../public/assets/contribute.webp";
 
 const data = [
     {
@@ -9,7 +12,7 @@ const data = [
         title: "1. Set Your Filters",
         content:
             "Choose the languages, stack, activity level, and other preferences that matter to you.",
-        image: "/assets/filter.webp",
+        image: filterImage.src,
         icon: <Upload className="w-6 h-6 text-primary" />,
     },
     {
@@ -17,7 +20,7 @@ const data = [
         title: "2. Search Instantly",
         content:
             "Hit search and explore thousands of open-source repositories matched to your criteria.",
-        image: "/assets/search.webp",
+        image: searchImage.src,
         icon: <Zap className="w-6 h-6 text-primary" />,
     },
     {
@@ -25,7 +28,7 @@ const data = [
         title: "3. Discover & Contribute",
         content:
             "Find the perfect project for your stack, start exploring the code, and make meaningful contributions.",
-        image: "/assets/contribute.webp",
+        image: contributeImage.src,
         icon: <Sparkles className="w-6 h-6 text-primary" />,
     },
 ];
