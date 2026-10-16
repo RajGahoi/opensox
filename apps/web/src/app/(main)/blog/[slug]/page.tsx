@@ -6,7 +6,7 @@ import BlogThemeSelector from "../blog-theme";
 import BlogSocials from "../blog-socials";
 import BlogBadge from "../blog-badge";
 
-const SITE_URL = "https://opensox.ai";
+import { SITE_URL } from "@/lib/seo";
 const BLOG_OG_IMAGE = {
   url: "/images/open-source-blogs.png",
   width: 1200,

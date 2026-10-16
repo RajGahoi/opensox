@@ -5,6 +5,18 @@
   "redirects": [
     {
       "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.opensox.ai" }],
+      "destination": "https://opensox.ai/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.opensox.in" }],
+      "destination": "https://opensox.ai/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
       "has": [
         {
           "type": "host",

@@ -7,15 +7,31 @@ import {
   MutationCache,
 } from "@tanstack/react-query";
 import { httpBatchLink } from "@trpc/client";
-import { useState, useMemo } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
 import type { Session } from "next-auth";
 import superjson from "superjson";
 import { trpc } from "@/lib/trpc";
 import { handleAuthError } from "@/lib/auth/handle-auth-error";
 
+function createSessionReadySignal() {
+  let resolve: () => void = () => {};
+  const promise = new Promise<void>((res) => {
+    resolve = res;
+  });
+  return { promise, resolve };
+}
+
 export function TRPCProvider({ children }: { children: React.ReactNode }) {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+  const sessionRef = useRef<Session | null>(null);
+  const [sessionReady] = useState(createSessionReadySignal);
+
+  useEffect(() => {
+    sessionRef.current = session ?? null;
+    if (status !== "loading") sessionReady.resolve();
+  }, [session, status, sessionReady]);
+
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -30,8 +46,7 @@ export function TRPCProvider({ children }: { children: React.ReactNode }) {
       })
   );
 
-  // Recreate client when session changes to ensure we get the latest token
-  const trpcClient = useMemo(() => {
+  const [trpcClient] = useState(() => {
     const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
     const trpcUrl = baseUrl.endsWith("/trpc") ? baseUrl : `${baseUrl}/trpc`;
 
@@ -41,7 +56,11 @@ export function TRPCProvider({ children }: { children: React.ReactNode }) {
           transformer: superjson,
           url: trpcUrl,
           async headers() {
-            const token = (session as Session)?.accessToken;
+            // the session is fetched in the browser, so requests made before it
+            // loads would otherwise go out without a token and be treated as
+            // an expired session
+            await sessionReady.promise;
+            const token = sessionRef.current?.accessToken;
             if (token) {
               return {
                 authorization: `Bearer ${token}`,
@@ -52,7 +71,7 @@ export function TRPCProvider({ children }: { children: React.ReactNode }) {
         }),
       ],
     });
-  }, [session]);
+  });
 
   return (
     <trpc.Provider client={trpcClient} queryClient={queryClient}>

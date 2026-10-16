@@ -5,11 +5,10 @@ import { ThemeProvider } from "./theme-provider";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { PostHogProvider, PostHogAuthTracker } from "./providers";
-import { getServerSession } from "next-auth/next";
-import { authConfig } from "@/lib/auth/config";
 import { SessionWrapper } from "./SessionWrapper";
 import { TRPCProvider } from "@/providers/trpc-provider";
 import { GeistSans } from "geist/font/sans";
+import { SITE_URL } from "@/lib/seo";
 
 // DM Mono - Used for code, terminal, and monospace text
 const dmMono = localFont({
@@ -27,13 +26,12 @@ const dmMono = localFont({
   ],
   variable: "--font-dm-mono",
   display: "optional",
-  preload: true,
+  preload: false,
 });
 
 // Geist Sans - Primary font for body text and UI
 const geistSans = GeistSans;
 
-const SITE_URL = "https://opensox.ai";
 const SITE_NAME = "Opensox";
 const SOCIAL_DESCRIPTION =
   "achieve in 1 year what took me 3 years in open source.";
@@ -73,9 +71,6 @@ export const metadata: Metadata = {
     "opensox",
   ],
   metadataBase: new URL(SITE_URL),
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -114,13 +109,13 @@ const websiteJsonLd = {
   description: SEO_DESCRIPTION,
 };
 
-export default async function RootLayout({
+// reading the session here would make every page, including public ones,
+// render per request; the session is loaded in the browser instead
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await getServerSession(authConfig);
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -137,7 +132,7 @@ export default async function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <SessionWrapper session={session}>
+            <SessionWrapper>
               <PostHogAuthTracker />
               <TRPCProvider>{children}</TRPCProvider>
             </SessionWrapper>

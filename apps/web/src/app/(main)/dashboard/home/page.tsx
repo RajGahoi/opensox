@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useProjectTitleStore } from "@/store/useProjectTitleStore";
-import Dashboard from "../page";
+import Dashboard from "@/components/dashboard/DashboardPageContent";
 import { useProjectsData } from "@/store/useProjectsDataStore";
 import { useRenderProjects } from "@/store/useRenderProjectsStore";
 import { projectsOfTheWeek } from "@/utils/config";

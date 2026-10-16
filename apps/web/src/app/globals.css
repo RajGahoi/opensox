@@ -131,7 +131,7 @@ html {
   @apply my-8;
 }
 .prose-blog img {
-  @apply rounded-lg my-6 max-w-full;
+  @apply rounded-lg my-6 max-w-full h-auto;
 }
 
 /* Blog theme overrides */
@@ -309,5 +309,17 @@ html {
 .blog-theme-select option {
   background-color: var(--blog-surface);
   color: var(--blog-fg);
+}
+
+.orbit-paused .animate-spin-slow,
+.orbit-paused .animate-spin-slow-reverse {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-spin-slow,
+  .animate-spin-slow-reverse {
+    animation: none;
+  }
 }
 

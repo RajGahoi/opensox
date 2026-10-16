@@ -1,7 +1,7 @@
 "use client";
 
 import { useRenderProjects } from "@/store/useRenderProjectsStore";
-import Dashboard from "../page";
+import Dashboard from "@/components/dashboard/DashboardPageContent";
 import { useEffect } from "react";
 import { useProjectTitleStore } from "@/store/useProjectTitleStore";
 import { useProjectsData } from "@/store/useProjectsDataStore";

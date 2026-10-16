@@ -8,8 +8,16 @@ import {
   ProgramSection,
 } from "@/components/oss-programs";
 import "./program-styles.css";
+import { canonicalMetadata } from "@/lib/seo";
 
 export const revalidate = 3600;
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const program = await getProgramBySlug(slug);
+  if (!program) notFound();
+  return canonicalMetadata(`/dashboard/oss-programs/${program.slug}`);
+}
 
 // Pre-configure marked options once, not on every render
 marked.setOptions({

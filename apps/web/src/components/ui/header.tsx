@@ -39,8 +39,6 @@ const Header = ({ title }: { title: string | React.ReactNode }) => {
             color={colors.brand.purple.grid}
             maxOpacity={1}
             flickerChance={0.1}
-            height={200}
-            width={2000}
           />
         </div>
       )}

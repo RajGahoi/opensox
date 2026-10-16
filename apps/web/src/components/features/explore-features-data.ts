@@ -14,7 +14,20 @@ import {
   UserGroupIcon,
   VideoCameraIcon,
 } from "@heroicons/react/24/outline";
+import type { StaticImageData } from "next/image";
 import type { ComponentType, SVGProps } from "react";
+// static imports get content-hashed urls, so they can be cached long-term
+import onboardingImage from "../../../public/assets/features/1onboardingcall.webp";
+import communityImage from "../../../public/assets/features/2community.webp";
+import weeklySessionsImage from "../../../public/assets/features/3weeklysessions.webp";
+import unlimitedQnaImage from "../../../public/assets/features/4unlimitedqna.webp";
+import proModulesImage from "../../../public/assets/features/5promodules.webp";
+import weeklyContestsImage from "../../../public/assets/features/6weeklycontests.webp";
+import handPickedProjectsImage from "../../../public/assets/features/7hand-pickedossprojects.webp";
+import proRecordingsImage from "../../../public/assets/features/8prorecordings.webp";
+import privateThreadsImage from "../../../public/assets/features/9pvtthreads.webp";
+import updatesImage from "../../../public/assets/features/10updates-n-opportunities.webp";
+import prorefsImage from "../../../public/assets/features/11prorefs.webp";
 
 export type HeroIcon = ComponentType<SVGProps<SVGSVGElement>>;
 
@@ -38,7 +51,7 @@ export type FeatureData = {
   title: string;
   description: string;
   icon: FeatureIconName;
-  image: string;
+  image: StaticImageData;
 };
 
 export const FEATURE_ICON_MAP: Record<FeatureIconName, HeroIcon> = {
@@ -58,17 +71,17 @@ export const FEATURE_ICON_MAP: Record<FeatureIconName, HeroIcon> = {
 };
 
 const FEATURE_IMAGES = {
-  onboarding: "/assets/features/1onboardingcall.png",
-  community: "/assets/features/2community.png",
-  weeklySessions: "/assets/features/3weeklysessions.png",
-  unlimitedQna: "/assets/features/4unlimitedqna.png",
-  proModules: "/assets/features/5promodules.png",
-  weeklyContests: "/assets/features/6weeklycontests.png",
-  handPickedProjects: "/assets/features/7hand-pickedossprojects.png",
-  proRecordings: "/assets/features/8prorecordings.png",
-  privateThreads: "/assets/features/9pvtthreads.png",
-  updates: "/assets/features/10updates-n-opportunities.png",
-  prorefs: "/assets/features/11prorefs.png",
+  onboarding: onboardingImage,
+  community: communityImage,
+  weeklySessions: weeklySessionsImage,
+  unlimitedQna: unlimitedQnaImage,
+  proModules: proModulesImage,
+  weeklyContests: weeklyContestsImage,
+  handPickedProjects: handPickedProjectsImage,
+  proRecordings: proRecordingsImage,
+  privateThreads: privateThreadsImage,
+  updates: updatesImage,
+  prorefs: prorefsImage,
 } as const;
 
 export const FEATURES_DATA: FeatureData[] = [
