@@ -241,12 +241,24 @@ const Pricing = () => {
                 <span className="text-[#a472ea]">Build in Public.</span>{" "}
                 <span className="text-[#a472ea]">First Principles.</span>
               </p>
-              <Link
-                href="https://www.opensox.ai/blog/pre-requisites-to-join-opensox-pro"
-                className="text-md font-light text-text-muted underline decoration-text-muted/50 underline-offset-4 transition-colors hover:text-text-secondary"
-              >
-                am i ready to join opensox pro?
-              </Link>
+              <div className="flex flex-col gap-2">
+                <Link
+                  href="https://www.opensox.ai/blog/pre-requisites-to-join-opensox-pro"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-md font-light text-text-muted underline decoration-text-muted/50 underline-offset-4 transition-colors hover:text-text-secondary"
+                >
+                  am i ready to join opensox pro?
+                </Link>
+                <Link
+                  href="https://youtu.be/7bvr3-nNttc?si=vJKaaccHzddqfaTJ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-md font-light text-text-muted underline decoration-text-muted/50 underline-offset-4 transition-colors hover:text-text-secondary"
+                >
+                  want a quick overview?
+                </Link>
+              </div>
             </motion.div>
 
             <motion.div
